@@ -1,9 +1,9 @@
 import React from 'react'
-import hypo from 'hypo-client';
+import hypo from 'hypo-client'
 
 class ExperimentSwitch extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       isLoaded: false,
       group: null
@@ -33,7 +33,41 @@ class ExperimentSwitch extends React.Component {
   }
 }
 
+class RuntimeStylesheet extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const {href, content, ...innerProps} = this.props
+    if (href) {
+      return (
+        <link rel="stylesheet" type="text/css" href={href} {...innerProps} />
+      )
+    } else {
+      return (<style type="text/css" {...innerProps}>
+        {content}
+      </style>)
+    }
+  }
+}
+
+class RuntimeHtml extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div dangerouslySetInnerHTML={{'__html': this.props.content}} />
+    )
+  }
+}
+
+
 export {
   hypo,
-  ExperimentSwitch
+  ExperimentSwitch,
+  RuntimeStylesheet,
+  RuntimeHtml
 }
