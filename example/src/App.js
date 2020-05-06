@@ -17,11 +17,11 @@ const App = () => {
         ({group, variables}) => {
           return (<>
             <div>Assignment: {group}</div>
-            <img src={variables.image_url} alt="foo" width="300" />
-            <p><a id="convert-link" href="#" onClick={() => {hypo.event('paid')}}>Pay!</a></p>
-            <RuntimeStylesheet
+            {variables && variables.image_url && <img src={variables.image_url} alt="foo" width="300" />}
+            <p><a id="convert-link" href="https://www.google.com" onClick={() => {hypo.event('paid')}}>Pay!</a></p>
+            {variables && variables.styles && <RuntimeStylesheet
               content={variables.styles}
-            />
+            />}
           </>)
         }
       }
