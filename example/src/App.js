@@ -23,8 +23,9 @@ const App = () => {
       onError={console.log}
       loadingIndicator={<div>Loading...</div>}
       render={
-        ({group, variables}) => {
+        ({group, variables, reasonCode}) => {
           return (<>
+            <div>Reason Code: {reasonCode}</div>
             <div>Assignment: {group}</div>
             {variables && variables.image_url && <img src={variables.image_url} alt="foo" width="300" />}
             <p><a id="convert-link" href="https://www.google.com" onClick={handleClick}>Pay!</a></p>
